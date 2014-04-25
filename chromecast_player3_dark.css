@@ -1,0 +1,46 @@
+	body {
+		font-family:"Lucida Sans Unicode", "Lucida Grande", sans-serif;
+		color:#FFFFFF;
+	}
+	h1 {
+		font-size:24px;
+		color:orange;
+	}
+	#songTitle {
+		padding:20px;
+		font-weight:bold;
+	}
+	button {
+		background:black;
+		color:LightGray;
+		border-color:#202020;
+		font-size:16px;
+		width:48%;
+		height:40px;
+	}
+	#Player {
+		position:fixed;	
+		display:block;	
+		width:50%;
+		height:100%;
+		left:0%;
+		top:0%;
+		text-align:center;
+		background:#101010;	
+	}
+	#Playlist {
+		position:fixed;
+		display:block;
+		width:50%;
+		height:100%;
+		left:50%;
+		top:0%;
+		overflow-y:scroll;
+		background:#181818;	
+	}
+	span {
+		-webkit-user-select: none; /* webkit (safari, chrome) browsers */
+		-moz-user-select: none; /* mozilla browsers */
+		-khtml-user-select: none; /* webkit (konqueror) browsers */
+		-ms-user-select: none; /* IE10+ */
+	}
