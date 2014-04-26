@@ -1,5 +1,8 @@
 "use strict";
 
+var hideTimer;
+var LinkTag = document.getElementById("theme");
+
 var Player = document.getElementById("mediaPlayer");
 Player.volume = 0.5;
 
@@ -133,11 +136,11 @@ function rebuildPlayList() {
 	PlayList.htmls = [];	
 	if (PlayList.names.length > 0) {
 		for (var i = 0; i < PlayList.names.length; i++) {
-			var backgroundColor = "#101010";	
-			if (i == PlayList.selected) { backgroundColor = "#505050"; }		
-			var textColor = "#C0C0C0";
-			if (i == PlayList.pos) { textColor = "#FFFFFF"; }
-			PlayList.htmls.push("<span id=\"id" + i + "\" style=\"background:"+backgroundColor+";color:"+textColor+"\" onclick=\"playlistClick("+ i + ")\" ondblclick=\"playlistDoubleClick("+ i+ ")\">" + PlayList.names[i] + "</span><br>");
+			var spanClass = "song";
+			if (i == PlayList.selected) { spanClass = "selectedSong" }		
+			if (i == PlayList.pos) { spanClass = "currentSong" }
+			if ((i == PlayList.pos) && (i == PlayList.selected)) { spanClass = "currentAndSelectedSong" }
+			PlayList.htmls.push("<span class=\""+spanClass+"\" id=\"id" + i + "\" onclick=\"playlistClick("+ i + ")\" ondblclick=\"playlistDoubleClick("+ i+ ")\">" + PlayList.names[i] + "</span><br>");
 		}
 		PlayListBlock.innerHTML = toStringNoComma(PlayList.htmls);	
 	} else {
@@ -196,4 +199,29 @@ function trackDown() {
 		rebuildPlayList();			
 	}	
 }	
+
+function showBlocks()
+{
+	resetTimer();
+	LinkTag.href = "chromecast_player3_light.css";
+	startTimer();
+}
+
+function hideBlocks()
+{
+	LinkTag.href = "chromecast_player3_dark.css";
+}
+
+function startTimer()
+{
+	hideTimer = setTimeout(hideBlocks, 10000);
+}
+
+function resetTimer()
+{
+	if (hideTimer)
+	{
+		clearTimeout(hideTimer);
+	}
+}
 

@@ -1,46 +1,75 @@
-	body {
-		font-family:"Lucida Sans Unicode", "Lucida Grande", sans-serif;
-		color:#FFFFFF;
-	}
+body {
+	font-family:"Lucida Sans Unicode", "Lucida Grande", sans-serif;
+	color:#FFFFFF;
+	background:#181818;	
+}
+button {
+	background:black;
+	color:LightGray;
+	border-color:#202020;
+	font-size:16px;
+	width:48%;
+	height:40px;
+}
+span {
+	-webkit-user-select: none; /* webkit (safari, chrome) browsers */
+	-moz-user-select: none; /* mozilla browsers */
+	-khtml-user-select: none; /* webkit (konqueror) browsers */
+	-ms-user-select: none; /* IE10+ */
+}
+#PlayerHeader {
+	color:orange;
+	margin:2%;
+	display:block;
+}
 	h1 {
 		font-size:24px;
-		color:orange;
+		margin:0px;
 	}
-	#songTitle {
-		padding:20px;
+	#credits {
+		font-size:12px;
 		font-weight:bold;
-	}
-	button {
-		background:black;
-		color:LightGray;
-		border-color:#202020;
-		font-size:16px;
-		width:48%;
-		height:40px;
-	}
-	#Player {
-		position:fixed;	
-		display:block;	
-		width:50%;
-		height:100%;
-		left:0%;
-		top:0%;
-		text-align:center;
-		background:#101010;	
-	}
-	#Playlist {
-		position:fixed;
-		display:block;
-		width:50%;
-		height:100%;
-		left:50%;
-		top:0%;
-		overflow-y:scroll;
-		background:#181818;	
-	}
-	span {
-		-webkit-user-select: none; /* webkit (safari, chrome) browsers */
-		-moz-user-select: none; /* mozilla browsers */
-		-khtml-user-select: none; /* webkit (konqueror) browsers */
-		-ms-user-select: none; /* IE10+ */
-	}
+		margin:0px;
+	}	
+#songTitle {
+	padding:20px;
+	font-weight:bold;
+}
+#Player {
+	position:fixed;	
+	width:50%;
+	height:100%;
+	left:0%;
+	top:0%;
+	text-align:center;
+}
+#PlayerControls{
+	display:block;
+}
+#Playlist {
+	position:fixed;
+	display:block;
+	width:50%;
+	height:100%;
+	left:50%;
+	top:0%;
+	overflow-y:scroll;
+	border-left-style:double;
+	border-left-color:#404040;
+	padding:0.5%;
+	color:#C0C0C0;
+}
+.song {
+	background:#181818;
+}
+.currentAndSelectedSong {
+	color:#FFFFFF;
+	background:#505050;
+}
+.currentSong {
+	color:#FFFFFF;
+	background:#181818;
+}
+.selectedSong{
+	background:#505050;
+}

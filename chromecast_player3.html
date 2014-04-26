@@ -2,30 +2,32 @@
 <html>
 	<head>
 		<meta charset="utf-8" />
-		<title>Chromecast MP3 Player</title>
-		<link rel="stylesheet" type="text/css" href="chromecast_player3_light.css">
+		<title>Chromecast MP3 Player by M4nuski</title>
+		<link id="theme" rel="stylesheet" type="text/css" href="chromecast_player3_light.css">
 	</head> 
 	<body>
 		<div id="Player">
-			<h1>Chromecast MP3 Player v1.3</h1>
-			<p id="songTitle">[No Track]</p>
-			<audio id="mediaPlayer" controls src="" type="audio/mpeg" onended="nextTrack()" onwaiting="waitAudio()" onplaying="playingAudio()">Your crappy browser does not support the audio element you retard.</audio><br>
-			<p>
-				<button id="PrevButton" type="button" onclick="prevTrack()">Previous Track</button>		
-				<button id="NextButton" type="button" onclick="nextTrack()">Next Track</button><br>
-			</p>				
-			<button id="AddButton" type="button" onclick="showDialog()">Add Tracks [...]</button>						
-			<button id="RemoveButton" type="button" onclick="removeTrack()">Remove Track</button><br>			
-			<button id="ShuffleButton" type="button" onclick="shuffleList()">Shuffle List</button>		
-			<button id="UpButton" type="button" onclick="trackUp()">Move Track Up</button><br>			
-			<button id="ClearButton" type="button" onclick="clearList()">Clear List</button>			
-			<button id="DownButton" type="button" onclick="trackDown()">Move Track Down</button><br>	
-			<input id="AddDialog" type="file" multiple hidden onchange="addFiles()" />		
+			<div id="PlayerHeader">
+				<h1>Chromecast MP3 Player</h1>
+				<div id="credits">v1.4 - M4nuski - 2014-04-25</div>
+			</div>
+			<p id="songTitle" onmouseover="showBlocks()">[No Track]</p>
+			<div id="PlayerControls">
+				<audio id="mediaPlayer" controls src="" type="audio/mpeg" onended="nextTrack()" onwaiting="waitAudio()" onplaying="playingAudio()">Your browser does not support the audio element.</audio><br>
+				<p>
+					<button id="PrevButton" type="button" onclick="prevTrack()">Previous Track</button>		
+					<button id="NextButton" type="button" onclick="nextTrack()">Next Track</button><br>
+				</p>				
+				<button id="AddButton" type="button" onclick="showDialog()">Add Tracks [...]</button>						
+				<button id="RemoveButton" type="button" onclick="removeTrack()">Remove Track</button><br>			
+				<button id="ShuffleButton" type="button" onclick="shuffleList()">Shuffle List</button>		
+				<button id="UpButton" type="button" onclick="trackUp()">Move Track Up</button><br>			
+				<button id="ClearButton" type="button" onclick="clearList()">Clear List</button>			
+				<button id="DownButton" type="button" onclick="trackDown()">Move Track Down</button><br>	
+				<input id="AddDialog" type="file" multiple hidden onchange="addFiles()" />	
+			</div>
 		</div>
 		<div id="Playlist">[Playlist Empty]</div>
 		<script src="chromecast_player3.js"></script>
 	</body>
-</html> 
-
-
-
+</html>
