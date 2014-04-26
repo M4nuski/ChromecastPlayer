@@ -11,20 +11,20 @@
 				<h1>Chromecast MP3 Player</h1>
 				<div id="credits">v1.4 - M4nuski - 2014-04-25</div>
 			</div>
-			<p id="songTitle" onmouseover="showBlocks()">[No Track]</p>
+			<p id="songTitle">[No Track]</p>
 			<div id="PlayerControls">
-				<audio id="mediaPlayer" controls src="" type="audio/mpeg" onended="nextTrack()" onwaiting="waitAudio()" onplaying="playingAudio()">Your browser does not support the audio element.</audio><br>
+				<audio id="mediaPlayer" controls src="" type="audio/mpeg">Your browser does not support the audio element.</audio><br>
 				<p>
-					<button id="PrevButton" type="button" onclick="prevTrack()">Previous Track</button>		
-					<button id="NextButton" type="button" onclick="nextTrack()">Next Track</button><br>
+					<button id="PrevButton" type="button">Previous Track</button>		
+					<button id="NextButton" type="button">Next Track</button><br>
 				</p>				
-				<button id="AddButton" type="button" onclick="showDialog()">Add Tracks [...]</button>						
-				<button id="RemoveButton" type="button" onclick="removeTrack()">Remove Track</button><br>			
-				<button id="ShuffleButton" type="button" onclick="shuffleList()">Shuffle List</button>		
-				<button id="UpButton" type="button" onclick="trackUp()">Move Track Up</button><br>			
-				<button id="ClearButton" type="button" onclick="clearList()">Clear List</button>			
-				<button id="DownButton" type="button" onclick="trackDown()">Move Track Down</button><br>	
-				<input id="AddDialog" type="file" multiple hidden onchange="addFiles()" />	
+				<button id="AddButton" type="button">Add Tracks [...]</button>						
+				<button id="RemoveButton" type="button">Remove Track</button><br>			
+				<button id="ShuffleButton" type="button">Shuffle List</button>		
+				<button id="UpButton" type="button">Move Track Up</button><br>			
+				<button id="ClearButton" type="button">Clear List</button>			
+				<button id="DownButton" type="button">Move Track Down</button><br>	
+				<input id="AddDialog" type="file" multiple hidden />	
 			</div>
 		</div>
 		<div id="Playlist">[Playlist Empty]</div>

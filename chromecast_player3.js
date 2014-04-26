@@ -1,13 +1,7 @@
+(function(document) {
 "use strict";
 
-var hideTimer;
-var LinkTag = document.getElementById("theme");
-
-var Player = document.getElementById("mediaPlayer");
-Player.volume = 0.5;
-
-var FileDialog = document.getElementById("AddDialog");
-
+//Variables:
 var PlayList = {
 	pos : -1,
 	names : [],
@@ -16,14 +10,71 @@ var PlayList = {
 	selected : -1
 };	
 
-var SongTitle = document.getElementById("songTitle");
+var hideTimer;
+var LinkTag;
+var Player;
+var FileDialog;
+
+var SongTitle;
 var SongTitle_empty = "[No Track]";	
-SongTitle.innerHTML = SongTitle_empty;
 
-var PlayListBlock = document.getElementById("Playlist");	
-var PlayListText_empty = "<span id=\"EmptyPlaylistTag\" onclick=\"showDialog()\">[Playlist Empty]</span>";
-PlayListBlock.innerHTML = PlayListText_empty;
+var PlayListBlock;
+var PlayListText_empty = "<span id=\"EmptyPlaylistTag\">[Playlist Empty]</span>";
 
+//Events:
+	var eventBuffer;
+    document.addEventListener("DOMContentLoaded", function () {
+        eventBuffer = document.getElementById("songTitle");
+        eventBuffer.addEventListener("mouseover", showBlocks);
+
+        eventBuffer = document.getElementById("mediaPlayer");
+        eventBuffer.addEventListener("ended", nextTrack);
+        eventBuffer.addEventListener("waiting", waitAudio);
+		eventBuffer.addEventListener("playing", playingAudio);
+		
+        eventBuffer = document.getElementById("PrevButton");
+        eventBuffer.addEventListener("click", prevTrack);		
+	    eventBuffer = document.getElementById("NextButton");
+        eventBuffer.addEventListener("click", nextTrack);	
+		
+	    eventBuffer = document.getElementById("AddButton");
+        eventBuffer.addEventListener("click", showDialog);	
+	    eventBuffer = document.getElementById("RemoveButton");
+        eventBuffer.addEventListener("click", removeTrack);	
+		
+	    eventBuffer = document.getElementById("ShuffleButton");
+        eventBuffer.addEventListener("click", shuffleList);			
+	    eventBuffer = document.getElementById("ClearButton");
+        eventBuffer.addEventListener("click", clearList);				
+
+	    eventBuffer = document.getElementById("UpButton");
+        eventBuffer.addEventListener("click", trackUp);		
+	    eventBuffer = document.getElementById("DownButton");
+        eventBuffer.addEventListener("click", trackDown);	
+
+	    FileDialog = document.getElementById("AddDialog");
+        FileDialog.addEventListener("change", addFiles);			
+	
+		//init		
+		LinkTag = document.getElementById("theme");	
+		
+		Player = document.getElementById("mediaPlayer");
+		Player.volume = 0.5;		
+		
+		SongTitle = document.getElementById("songTitle");
+		SongTitle.innerHTML = SongTitle_empty;		
+		
+		PlayListBlock = document.getElementById("Playlist");
+		PlayListBlock.innerHTML = PlayListText_empty;
+		
+		//eventBuffer = document.getElementById("EmptyPlaylistTag");
+		//eventBuffer.addEventListener("click", showDialog);
+		
+        showBlocks();
+    });
+
+
+//Methods:
 function tryPlay() {
 	if ((PlayList.names.length > 0) & (PlayList.pos > -1) & (PlayList.pos < PlayList.names.length)) {	
 		var reader  = new FileReader();
@@ -113,6 +164,7 @@ function clearList() {
 	PlayList.htmls = [];
 	PlayList.selected = -1;
 	PlayListBlock.innerHTML = PlayListText_empty;
+	document.getElementById("EmptyPlaylistTag").addEventListener("click", showDialog);	
 	stopPlay();
 }
 
@@ -121,19 +173,23 @@ function shuffleList() {
 		for (var i = 0; i < PlayList.names.length; i++) {
 			var randomTrack = Math.floor((Math.random()*PlayList.names.length)+1); 
 			swapTrack(i, randomTrack);
+			if (i == PlayList.selected) { PlayList.selected = randomTrack } 
+			else if (randomTrack == PlayList.selected) { PlayList.selected = i }
+			if (i == PlayList.pos) { PlayList.pos = randomTrack }
+			else if (randomTrack == PlayList.pos) { PlayList.pos = i }
 		}
 	}
 	rebuildPlayList();
 }
 
 function playlistClick(id) {
-	PlayList.selected = id;
+	PlayList.selected = id.substr(2);
 	rebuildPlayList();	
 	return false;
 }
 
 function playlistDoubleClick(id) {
-	PlayList.pos = id;		
+	PlayList.pos = id.substr(2);	
 	tryPlay();
 	rebuildPlayList();	
 }
@@ -146,9 +202,16 @@ function rebuildPlayList() {
 			if (i == PlayList.selected) { spanClass = "selectedSong" }		
 			if (i == PlayList.pos) { spanClass = "currentSong" }
 			if ((i == PlayList.pos) && (i == PlayList.selected)) { spanClass = "currentAndSelectedSong" }
-			PlayList.htmls.push("<span class=\""+spanClass+"\" id=\"id" + i + "\" onclick=\"playlistClick("+ i + ")\" ondblclick=\"playlistDoubleClick("+ i+ ")\">" + PlayList.names[i] + "</span><br>");
+			PlayList.htmls.push("<span class=\""+spanClass+"\" id=\"id" + i + "\">" + PlayList.names[i] + "</span><br>");
+
 		}
 		PlayListBlock.innerHTML = toStringNoComma(PlayList.htmls);	
+		for (var i = 0; i < PlayList.names.length; i++) {
+			var eventBuffer = document.getElementById("id" + i);
+			eventBuffer.addEventListener("click", function () { playlistClick((this.id)) });
+			eventBuffer.addEventListener("dblclick", function () { playlistDoubleClick(this.id) });
+			//onclick=\"playlistClick("+ i + ")\" ondblclick=\"playlistDoubleClick("+ i+ ")\"		
+		}		
 	} else {
 		stopPlay();
 	}
@@ -230,4 +293,4 @@ function resetTimer()
 		clearTimeout(hideTimer);
 	}
 }
-
+}(document));
