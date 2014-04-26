@@ -8,8 +8,7 @@ Tiny self-hiding browser-based MP3 player.
 
 Current work-in-progress
 --------
-* Divide code to .css and .js files (concerns separation ftw!)
-* Re-enable auto-hide (was too annoying during testing phase)
 * Finish Playlist Shuffle
+* Remove JS calls from HTML tags
 
 -M4nuski

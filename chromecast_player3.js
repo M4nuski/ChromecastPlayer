@@ -117,7 +117,13 @@ function clearList() {
 }
 
 function shuffleList() {
-	//TODO
+	if (PlayList.names.length > 1) {
+		for (var i = 0; i < PlayList.names.length; i++) {
+			var randomTrack = Math.floor((Math.random()*PlayList.names.length)+1); 
+			swapTrack(i, randomTrack);
+		}
+	}
+	rebuildPlayList();
 }
 
 function playlistClick(id) {
