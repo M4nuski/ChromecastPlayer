@@ -274,13 +274,13 @@ function trackDown() {
 function showBlocks()
 {
 	resetTimer();
-	LinkTag.href = "chromecast_player3_light.css";
+	LinkTag.href = "chromecast_player14_light.css";
 	startTimer();
 }
 
 function hideBlocks()
 {
-	LinkTag.href = "chromecast_player3_dark.css";
+	LinkTag.href = "chromecast_player14_dark.css";
 }
 
 function startTimer()

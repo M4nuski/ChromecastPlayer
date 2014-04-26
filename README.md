@@ -19,7 +19,7 @@ Hints:
 * Use 480p only to avoid waisting bandwidth on video.
 * Resize Chrome's window to the minimum needed.
 
-![ScreenShot](https://raw.githubusercontent.com/M4nuski/ChromecastPlayer/master/ChromecastPlayer3.jpg)
+![ScreenShot](https://raw.githubusercontent.com/M4nuski/ChromecastPlayer/master/ChromecastPlayer14.jpg)
 
 -M4nuski
 
