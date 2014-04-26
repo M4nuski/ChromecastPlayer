@@ -285,7 +285,7 @@ function hideBlocks()
 
 function startTimer()
 {
-	hideTimer = setTimeout(hideBlocks, 10000);
+	hideTimer = setTimeout(hideBlocks, 20000);
 }
 
 function resetTimer()
