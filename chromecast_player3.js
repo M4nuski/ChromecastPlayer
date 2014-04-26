@@ -67,8 +67,8 @@ var PlayListText_empty = "<span id=\"EmptyPlaylistTag\">[Playlist Empty]</span>"
 		PlayListBlock = document.getElementById("Playlist");
 		PlayListBlock.innerHTML = PlayListText_empty;
 		
-		//eventBuffer = document.getElementById("EmptyPlaylistTag");
-		//eventBuffer.addEventListener("click", showDialog);
+		eventBuffer = document.getElementById("EmptyPlaylistTag");
+		eventBuffer.addEventListener("click", showDialog);
 		
         showBlocks();
     });
@@ -122,6 +122,7 @@ function nextTrack(){
 }	
 
 function showDialog() {
+	resetTimer();
 	FileDialog.click();
 }
 
@@ -155,6 +156,7 @@ function addFiles() {
 			rebuildPlayList();
 		}
 	}
+	startTimer();
 }
 	
 function clearList() {
@@ -210,7 +212,7 @@ function rebuildPlayList() {
 			var eventBuffer = document.getElementById("id" + i);
 			eventBuffer.addEventListener("click", function () { playlistClick((this.id)) });
 			eventBuffer.addEventListener("dblclick", function () { playlistDoubleClick(this.id) });
-			//onclick=\"playlistClick("+ i + ")\" ondblclick=\"playlistDoubleClick("+ i+ ")\"		
+
 		}		
 	} else {
 		stopPlay();
