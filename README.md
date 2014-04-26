@@ -1,5 +1,5 @@
 Chromecast MP3 Player
-----------
+========
 Tiny self-hiding browser-based MP3 player.
 * Playlist Editor.
 * Small Footprint.
@@ -9,10 +9,13 @@ Tiny self-hiding browser-based MP3 player.
 Probably only works in Google Chrome but that shouldn't be an issue.
 
 To use:
-1. Simply load the .html in Chrome.
-2. Click Cast This Tab To...
+--------
+1.  Simply load the .html in Chrome.
+2.  Click Cast This Tab To...
+3.  You now have a MP3 player streaming on your device!
 
 Hints:
+-------
 * Use 480p only to avoid waisting bandwidth on video.
 * Resize Chrome's window to the minimum needed.
 
