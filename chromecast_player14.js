@@ -158,7 +158,7 @@ function addFiles() {
 	}
 	startTimer();
 }
-	
+
 function clearList() {
 	PlayList.pos = -1;
 	PlayList.names = [];
@@ -185,7 +185,7 @@ function shuffleList() {
 }
 
 function playlistClick(id) {
-	PlayList.selected = id.substr(2);
+	PlayList.selected = + id.substr(2);
 	rebuildPlayList();	
 	return false;
 }
@@ -232,7 +232,7 @@ function removeTrack() {
 }
 
 function swapTrack(a, b) {
-	if ((PlayList.names.length > 0) & (a > -1) & (a < PlayList.names.length) & (b > -1) & (b < PlayList.names.length) & (a != b)) {
+	if ((PlayList.names.length > 1) & (a > -1) & (a < PlayList.names.length) & (b > -1) & (b < PlayList.names.length) & (a != b)) {
 	
 		var nameBuffer = PlayList.names[a];
 		PlayList.names[a] = PlayList.names[b];
